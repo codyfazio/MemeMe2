@@ -37,7 +37,7 @@ class MemeTableViewController: UITableViewController {
     
     //Create individual cells for table view
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("memeCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("memeCell") as UITableViewCell!
         let meme = self.memes[indexPath.row]
         
         cell.textLabel?.text = meme.topText! + " " + meme.bottomText!
@@ -48,7 +48,7 @@ class MemeTableViewController: UITableViewController {
     
     //Segue to detail view when meme is selected
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeViewController")! as! MemeViewController
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeViewController") as! MemeViewController
         detailController.meme = self.memes[indexPath.row]
         detailController.hidesBottomBarWhenPushed = true
         self.navigationController!.pushViewController(detailController, animated: true)

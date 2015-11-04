@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MemeCollectionViewController: UICollectionViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MemeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     //Create array for saved Memes
     var memes: [Meme]!
@@ -47,7 +47,7 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
     //Segue to detail view when meme is selected
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeViewController")! as! MemeViewController
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeViewController") as! MemeViewController
         detailController.meme = self.memes[indexPath.item]
         detailController.hidesBottomBarWhenPushed = true
         self.navigationController!.pushViewController(detailController, animated: true)

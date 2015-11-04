@@ -94,7 +94,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //Display image picker controller to select image from library
     func pickImageFromAlbum() {
-        var imagePicker = UIImagePickerController()
+        let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -102,7 +102,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     }
     //Take a picture and use it for a meme
     func pickImageFromCamera() {
-        var imagePicker = UIImagePickerController()
+        let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
         self.presentViewController(imagePicker, animated: true, completion: nil)
@@ -110,11 +110,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     //Dismiss image picker controller without selecting an image
     func imagePickerControllerDidCancel(picker:UIImagePickerController){
-        println("dismissing imagepicker")
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     //When an image for memeing has been selected, store the image
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage { imageView.image = image
             self.dismissViewControllerAnimated(true, completion: nil) }
     }
@@ -186,10 +185,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     //Save a meme and present the Activity Controller with options for sharing a meme
     func share () {
         save()
-        let objectsToShare = [UIActivityTypePostToFacebook,UIActivityTypePostToTwitter,UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypeAirDrop,UIActivityTypeSaveToCameraRoll]
+        _ = [UIActivityTypePostToFacebook,UIActivityTypePostToTwitter,UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypeAirDrop,UIActivityTypeSaveToCameraRoll]
         let activity = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
         activity.completionWithItemsHandler = { (activity, success, items, error) in
-        let selectedMemeController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController")! as! UITabBarController
+        let selectedMemeController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
             
             self.navigationController!.presentViewController(selectedMemeController, animated: true, completion: nil)
             self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -227,7 +226,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     //Dismisses the current view controler and displays the sent memes tabs
     func cancel(){
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController")! as? UITabBarController
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("TabBarController") as? UITabBarController
         self.navigationController?.presentViewController(detailController!, animated: true,completion:nil)
     }
 
