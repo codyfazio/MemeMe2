@@ -1,7 +1,7 @@
 //
 //  MemeTableViewController.swift
 //
-//  Created by Cody Clingan on 4/12/15.
+//  Created by Cody Fazio on 4/12/15.
 //  Copyright (c) 2015 Cody Fazio. All rights reserved.
 //
 

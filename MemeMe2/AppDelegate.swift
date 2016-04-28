@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var memes = [Meme]()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        for name in UIFont.familyNames() {
+            print(name)
+            if let nameString = name as? String
+            {
+                print(UIFont.fontNamesForFamilyName(nameString))
+            }
+        }
         // Override point for customization after application launch.
         return true
     }

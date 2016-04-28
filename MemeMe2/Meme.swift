@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class Meme {
+struct Meme {
     //Create variables to store Meme attributes
     var topText:String!
     var bottomText:String!

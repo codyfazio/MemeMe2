@@ -19,7 +19,7 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
         //Update the memes array to update view
         updateMemes()
         //Add attributes and link via segue to Meme Editor
-        addMemeButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createMeme")
+        addMemeButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(MemeCollectionViewController.createMeme))
         //Display addMemeButton
         self.navigationItem.rightBarButtonItem = addMemeButton
     }

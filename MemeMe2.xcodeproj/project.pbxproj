@@ -19,6 +19,7 @@
 		ADB1D0911AE1B8160009DB34 /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB1D08B1AE1B8160009DB34 /* MemeEditorViewController.swift */; };
 		ADB1D0921AE1B8160009DB34 /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB1D08C1AE1B8160009DB34 /* MemeTableViewController.swift */; };
 		ADB1D0931AE1B8160009DB34 /* MemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB1D08D1AE1B8160009DB34 /* MemeViewController.swift */; };
+		ADB376251CD1A326004B7302 /* Impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADB376241CD1A326004B7302 /* Impact.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		ADB1D08B1AE1B8160009DB34 /* MemeEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
 		ADB1D08C1AE1B8160009DB34 /* MemeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
 		ADB1D08D1AE1B8160009DB34 /* MemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeViewController.swift; sourceTree = "<group>"; };
+		ADB376241CD1A326004B7302 /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 		ADB1D0611AE1B77D0009DB34 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ADB376241CD1A326004B7302 /* Impact.ttf */,
 				ADB1D0621AE1B77D0009DB34 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -212,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADB376251CD1A326004B7302 /* Impact.ttf in Resources */,
 				ADB1D0871AE1B7EB0009DB34 /* Main.storyboard in Resources */,
 				ADB1D0711AE1B77D0009DB34 /* LaunchScreen.xib in Resources */,
 				ADB1D06E1AE1B77D0009DB34 /* Images.xcassets in Resources */,
