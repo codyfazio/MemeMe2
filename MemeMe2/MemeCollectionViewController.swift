@@ -19,7 +19,7 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
         //Update the memes array to update view
         updateMemes()
         //Add attributes and link via segue to Meme Editor
-        addMemeButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(MemeCollectionViewController.createMeme))
+        addMemeButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MemeCollectionViewController.createMeme))
         //Display addMemeButton
         self.navigationItem.rightBarButtonItem = addMemeButton
     }
@@ -30,39 +30,39 @@ class MemeCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     //Pass in number of memes in array
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.memes.count
     }
     
     //Create individual cells for view
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionCell", forIndexPath: indexPath) as! MemeCollectionViewCell
-        let meme = self.memes[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCollectionCell", for: indexPath) as! MemeCollectionViewCell
+        let meme = self.memes[(indexPath as NSIndexPath).item]
         let imageView = UIImageView(image: meme.image)
         cell.backgroundView = imageView
         return cell
     }
     
     //Segue to detail view when meme is selected
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeViewController") as! MemeViewController
-        detailController.meme = self.memes[indexPath.item]
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeViewController") as! MemeViewController
+        detailController.meme = self.memes[(indexPath as NSIndexPath).item]
         detailController.hidesBottomBarWhenPushed = true
         self.navigationController!.pushViewController(detailController, animated: true)
     }
     
     //Begin segue to Meme Editor
     func createMeme() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         tabBarController?.hidesBottomBarWhenPushed = true
-        self.performSegueWithIdentifier("createMeme", sender: self)
+        self.performSegue(withIdentifier: "createMeme", sender: self)
     }
     
     //Update Memes array in AppDelegate
     func updateMemes(){
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
         memes = applicationDelegate.memes
     }
 }

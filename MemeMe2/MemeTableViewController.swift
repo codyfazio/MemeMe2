@@ -20,36 +20,36 @@ class MemeTableViewController: UITableViewController {
         //Update the memes array to update view
         updateMemes()
         //Add attributes and link via segue to Meme Editor
-        addMemeButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "createMeme")
+        addMemeButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MemeTableViewController.createMeme))
         //Display addMemeButton
         self.navigationItem.rightBarButtonItem = addMemeButton
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //Update the memes array to update view
         updateMemes()
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Pass in number of memes in array
         return memes.count
     }
     
     //Create individual cells for table view
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("memeCell") as UITableViewCell!
-        let meme = self.memes[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memeCell") as UITableViewCell!
+        let meme = self.memes[(indexPath as NSIndexPath).row]
         
-        cell.textLabel?.text = meme.topText! + " " + meme.bottomText!
-        cell.detailTextLabel?.text = ""
-        cell.imageView?.image = meme.memedImage
-        return cell
+        cell?.textLabel?.text = meme.topText! + " " + meme.bottomText!
+        cell?.detailTextLabel?.text = ""
+        cell?.imageView?.image = meme.memedImage
+        return cell!
     }
     
     //Segue to detail view when meme is selected
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeViewController") as! MemeViewController
-        detailController.meme = self.memes[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeViewController") as! MemeViewController
+        detailController.meme = self.memes[(indexPath as NSIndexPath).row]
         detailController.hidesBottomBarWhenPushed = true
         self.navigationController!.pushViewController(detailController, animated: true)
     }
@@ -59,14 +59,14 @@ class MemeTableViewController: UITableViewController {
     
     //Segue to Meme Editor
     func createMeme() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         tabBarController?.hidesBottomBarWhenPushed = true
-        self.performSegueWithIdentifier("createMeme", sender: self)
+        self.performSegue(withIdentifier: "createMeme", sender: self)
     }
     
     //Update Memes array in AppDelegate
     func updateMemes(){
-        let object = UIApplication.sharedApplication().delegate
+        let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
     }

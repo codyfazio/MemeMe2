@@ -16,7 +16,7 @@ struct Meme {
     var memedImage: UIImage!
     
     //Create individual Meme object
-    init(let top: String, let bottom: String, let image: UIImage, let memedImage: UIImage){
+    init(top: String, bottom: String, image: UIImage, memedImage: UIImage){
         self.topText = top
         self.bottomText = bottom
         self.image = image
